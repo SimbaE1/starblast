@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spaceship Multiplayer</title>
+  <style>
+    body {
+      margin: 0; 
+      overflow: hidden;
+      background: #000;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    #gameCanvas {
+      background: #222;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Our game logic -->
+  <script src="client.js"></script>
+</body>
+</html>
