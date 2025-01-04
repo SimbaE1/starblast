@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Static Game Example</title>
+</head>
+<body>
+  <h1>Simple Game State Demo</h1>
+  <p>Score: <span id="score">0</span></p>
+  <button id="increaseScore">Increase Score</button>
+  <button id="saveGame">Save Game State</button>
+  <button id="loadGame">Load Game State</button>
+
+  <script>
+    // In-memory game state
+    const gameState = {
+      score: 0,
+    };
+
+    // Display the current score in the DOM
+    function updateScoreDisplay() {
+      document.getElementById("score").textContent = gameState.score;
+    }
+
+    // Increase the score when button is clicked
+    document.getElementById("increaseScore").addEventListener("click", () => {
+      gameState.score++;
+      updateScoreDisplay();
+    });
+
+    // Save game state to localStorage
+    document.getElementById("saveGame").addEventListener("click", () => {
+      localStorage.setItem("myGameState", JSON.stringify(gameState));
+      alert("Game state saved!");
+    });
+
+    // Load game state from localStorage
+    document.getElementById("loadGame").addEventListener("click", () => {
+      const savedState = localStorage.getItem("myGameState");
+      if (savedState) {
+        const parsedState = JSON.parse(savedState);
+        gameState.score = parsedState.score;
+        updateScoreDisplay();
+        alert("Game state loaded!");
+      } else {
+        alert("No saved game found.");
+      }
+    });
+
+    // Initialize display
+    updateScoreDisplay();
+  </script>
+</body>
+</html>
